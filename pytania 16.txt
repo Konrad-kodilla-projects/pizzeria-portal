@@ -1,0 +1,1 @@
+1. npm vs yarn - czego używać i po co nam dwa?
