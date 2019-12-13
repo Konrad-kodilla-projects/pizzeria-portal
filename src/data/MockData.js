@@ -1,5 +1,12 @@
-const uuid = () => Math.floor(Math.random() * 10 ** 4)
-const date = new Date().toDateString();
+/* Generate random data */
+const random = (num, offset=0) => Math.floor(Math.random() * num) + offset;
+const uuid = () => random(10 ** 4);
+const newDate = new Date();
+const minutes = () => {
+  const min = random(60);
+  return min < 10 ? `0${min}` : min
+};
+const date = () => `${random(10,8)}:${minutes()}`;
 const total = () => Math.floor(Math.random() * 10 ** 2)
 
 export const orders = [
@@ -9,25 +16,25 @@ export const orders = [
       {
         orderID: uuid(),
         status: 'new',
-        date,
+        date: date(),
         total: total(),
       },
       {
         orderID: uuid(),
         status: 'ordered',
-        date,
+        date: date(),
         total: total(),
       },
       {
         orderID: uuid(),
         status: 'ready',
-        date,
+        date: date(),
         total: total(),
       },
       {
         orderID: uuid(),
         status: 'cancelled',
-        date,
+        date: date(),
         total: total(),
       },
     ],
@@ -38,25 +45,25 @@ export const orders = [
       {
         orderID: uuid(),
         status: 'new',
-        date,
+        date: date(),
         total: total(),
       },
       {
         orderID: uuid(),
         status: 'ordered',
-        date,
+        date: date(),
         total: total(),
       },
       {
         orderID: uuid(),
         status: 'delivered',
-        date,
+        date: date(),
         total: total(),
       },
       {
         orderID: uuid(),
         status: 'done',
-        date,
+        date: date(),
         total: total(),
       },
     ],

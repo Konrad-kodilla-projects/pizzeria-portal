@@ -7,23 +7,29 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './OrderList.module.scss';
 
-const OrderList = ({ orderID, status, date, total }) => {
-  let btn;
+const OrderList = ({ orderID, status, date, total, history }) => {
+  let btn, readyClass;
 
   if (status === 'ready') {
+    readyClass = styles.ready;
     btn = (
-      <FontAwesomeIcon icon={faCheck} />
+      <div className={styles.iconBox}>
+        <FontAwesomeIcon className={styles.icon} icon={faCheck} />
+      </div>
     );
   }
 
   if (status !== 'done' && status !== 'cancelled') {
     return (
-      <TableRow>
+      <TableRow
+        className={readyClass + ' ' + styles.row}
+        onClick={() => history.push(`/ordering/order/${orderID}`)}
+      >
         <TableCell>{orderID}</TableCell>
         <TableCell>{status}</TableCell>
         <TableCell>{date}</TableCell>
         <TableCell>${total}</TableCell>
-        <TableCell className={styles.icon}>{btn}</TableCell>
+        <TableCell>{btn}</TableCell>
       </TableRow>
     );
   } else {
