@@ -31,16 +31,15 @@ const TableList = ({ tableID, orders, history }) => (
         </TableHead>
         <TableBody>
           {orders.map((orderProps, id) => (
-            <OrderList key={id} {...orderProps}  history={history}/>
+            <OrderList key={id} {...orderProps} history={history} />
           ))}
         </TableBody>
       </Table>
       <div className={styles.add}>
         <Link className={styles.btnOrder} to='/ordering/new'>
-        <Fab size='small' color='primary' aria-label='add'>
-          <AddIcon />
-        </Fab>
-
+          <Fab size='small' color='primary' aria-label='add'>
+            <AddIcon />
+          </Fab>
         </Link>
       </div>
     </Paper>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,13 +9,21 @@ import styles from './OrderList.module.scss';
 
 const OrderList = ({ orderID, status, date, total, history }) => {
   let btn, readyClass;
+  const [newStatus, setStatus] = useState(status);
+  const changeRoute = () => history.push(`/ordering/order/${orderID}`);
 
-  if (status === 'ready') {
+  if (newStatus === 'ready') {
     readyClass = styles.ready;
     btn = (
-      <div className={styles.iconBox}>
-        <FontAwesomeIcon className={styles.icon} icon={faCheck} />
-      </div>
+      <TableCell id={styles.iconCell}>
+        <div className={styles.iconBox}>
+          <FontAwesomeIcon
+            className={styles.icon}
+            icon={faCheck}
+            onClick={() => setStatus('delivered')}
+          />
+        </div>
+      </TableCell>
     );
   }
 
@@ -23,13 +31,15 @@ const OrderList = ({ orderID, status, date, total, history }) => {
     return (
       <TableRow
         className={readyClass + ' ' + styles.row}
-        onClick={() => history.push(`/ordering/order/${orderID}`)}
       >
-        <TableCell>{orderID}</TableCell>
-        <TableCell>{status}</TableCell>
-        <TableCell>{date}</TableCell>
-        <TableCell>${total}</TableCell>
-        <TableCell>{btn}</TableCell>
+        {/* wrzuciłem te onClicki to każdej komórki bo jak było tylko w rodzicu to nie 
+        można było kliknąć buttona więc zrobiłem to trochę na piechotę ale na lepszy pomysł
+        nie wpadłem :) */}
+        <TableCell onClick={changeRoute}>{orderID}</TableCell>
+        <TableCell onClick={changeRoute}>{newStatus}</TableCell>
+        <TableCell onClick={changeRoute}>{date}</TableCell>
+        <TableCell onClick={changeRoute}>${total}</TableCell>
+        {btn ? btn : <TableCell onClick={changeRoute}></TableCell>}
       </TableRow>
     );
   } else {
