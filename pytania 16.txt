@@ -1,1 +1,9 @@
 1. npm vs yarn - czego używać i po co nam dwa?
+
+2. czemu wcześniej zaciągał css'y a teraz przeczytałem w dokumentacji że to działa ale musi być Plik.module.scss,
+  da sie to zmienić żeby było jak wcześniej?
+
+3. Jak łączy się frontend z backendem na serwerze, gdzie można napisać taki skrypt?
+  Czy lepiej to napisać po prostu w jednym katalogu?
+
+4. W jaki sposób działa nodowski process.env w react? w sensie on się odpala przez node pod spodem czy jak?

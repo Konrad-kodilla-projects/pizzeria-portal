@@ -1,0 +1,13 @@
+.component {
+  display: flex;
+}
+
+.navLink {
+  margin: 10px;
+  text-decoration: none;
+  color: rgb(62, 72, 199);
+}
+
+.active {
+  color: red;
+}
