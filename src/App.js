@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import { PUBLIC_URL } from './settings';
+
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import Dashboard from './components/views/Dashboard/Dashboard';
 import Login from './components/views/Login/Login';
@@ -16,51 +18,31 @@ function App() {
     <BrowserRouter basename={'/panel'}>
       <MainLayout>
         <Switch>
+          <Route exact path={`${PUBLIC_URL}/`} component={Dashboard} />
+          <Route exact path={PUBLIC_URL + '/login'} component={Login} />
+          <Route exact path={PUBLIC_URL + '/kitchen'} component={Kitchen} />
           <Route
             exact
-            path={`${process.env.PUBLIC_URL}/`}
-            component={Dashboard}
-          />
-          <Route
-            exact
-            path={process.env.PUBLIC_URL + '/login'}
-            component={Login}
-          />
-          <Route
-            exact
-            path={process.env.PUBLIC_URL + '/kitchen'}
-            component={Kitchen}
-          />
-          <Route
-            exact
-            path={process.env.PUBLIC_URL + '/ordering/order/:id'}
+            path={PUBLIC_URL + '/ordering/order/:id'}
             component={Order}
           />
           <Route
             exact
-            path={process.env.PUBLIC_URL + '/ordering/new'}
+            path={PUBLIC_URL + '/ordering/new'}
             component={OrderNew}
           />
+          <Route exact path={PUBLIC_URL + '/ordering'} component={Orders} />
           <Route
             exact
-            path={process.env.PUBLIC_URL + '/ordering'}
-            component={Orders}
-          />
-          <Route
-            exact
-            path={process.env.PUBLIC_URL + '/tables/booking/:id'}
+            path={PUBLIC_URL + '/tables/booking/:id'}
             component={Table}
           />
           <Route
             exact
-            path={process.env.PUBLIC_URL + '/tables/event/:id'}
+            path={PUBLIC_URL + '/tables/event/:id'}
             component={Table}
           />
-          <Route
-            exact
-            path={process.env.PUBLIC_URL + '/tables'}
-            component={Tables}
-          />
+          <Route exact path={PUBLIC_URL + '/tables'} component={Tables} />
         </Switch>
       </MainLayout>
     </BrowserRouter>
